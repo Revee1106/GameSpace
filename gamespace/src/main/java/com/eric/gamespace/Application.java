@@ -1,4 +1,4 @@
-package com.eric.gamespace.taoism;
+package com.eric.gamespace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
