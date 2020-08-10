@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+    <!DOCTYPE generatorConfiguration    
+     PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"    
+     "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="gamespace" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库链接URL，用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/taoism?characterEncoding=utf8&amp;serverTimezone=UTC" userId="root" password="c$2N$Gdp">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- 生成模型的包名和位置，targetPackage用于设置存放的包，targetProject请填写成项目名 -->
+		<javaModelGenerator targetPackage="com.eric.gamespace.taoism.entity"
+			targetProject="gamespace/src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- 生成映射文件的包名和位置，targetPackage用于设置存放的包，targetProject请填写成项目名 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="gamespace/src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- 生成DAO的包名和位置，targetPackage用于设置存放的包，targetProject请填写成项目名 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.eric.gamespace.taoism.dao" targetProject="gamespace/src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
+		<table tableName="taoism_acct_info" domainObjectName="TaoismAcctInfo"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false"></table>
+	</context>
+</generatorConfiguration>

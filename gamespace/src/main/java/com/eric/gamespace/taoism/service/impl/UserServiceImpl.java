@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserRegistRespVo userRegist(UserRegistReqVo reqVo) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
