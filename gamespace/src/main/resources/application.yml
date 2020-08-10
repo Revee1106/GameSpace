@@ -1,7 +1,7 @@
 server:
    port:   8092
    servlet:
-      name:   /${spring.application.name}
+      name: /${spring.application.name}
    http:
       encoding:
          charset: utf-8
