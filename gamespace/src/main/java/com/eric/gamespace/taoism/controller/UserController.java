@@ -21,9 +21,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private RedisService redisService;
-	
 	@RequestMapping(value = "/userRegist")
 	public UserRegistRespVo userRegist(@RequestBody UserRegistReqVo reqVo) {
 		log.info("userRegist start, param is:{}", JsonUtil.beanToJson(reqVo));
@@ -32,12 +29,6 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value = "/testRedis")
-	public String testRedis() {
-		redisService.setObj("name", "taoism", 300);
-		return (String) redisService.getObj("name");
-	}
-
 	@RequestMapping(value = "/")
 	public String home() {
 		return "Welcome to My GameSpace!";

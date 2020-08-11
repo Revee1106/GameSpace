@@ -7,6 +7,8 @@ public class TaoismAcctInfo {
 
     private String nickName;
 
+    private String acctStatus;
+
     private Integer acctType;
 
     private Integer acctLevel;
@@ -41,6 +43,14 @@ public class TaoismAcctInfo {
 
     public void setNickName(String nickName) {
         this.nickName = nickName == null ? null : nickName.trim();
+    }
+
+    public String getAcctStatus() {
+        return acctStatus;
+    }
+
+    public void setAcctStatus(String acctStatus) {
+        this.acctStatus = acctStatus == null ? null : acctStatus.trim();
     }
 
     public Integer getAcctType() {

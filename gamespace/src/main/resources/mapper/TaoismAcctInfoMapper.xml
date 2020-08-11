@@ -5,6 +5,7 @@
     <id column="LOGIN_ACCT" jdbcType="VARCHAR" property="loginAcct" />
     <result column="LOGIN_PWD" jdbcType="VARCHAR" property="loginPwd" />
     <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName" />
+    <result column="ACCT_STATUS" jdbcType="VARCHAR" property="acctStatus" />
     <result column="ACCT_TYPE" jdbcType="INTEGER" property="acctType" />
     <result column="ACCT_LEVEL" jdbcType="INTEGER" property="acctLevel" />
     <result column="EMAIL_ADDR" jdbcType="VARCHAR" property="emailAddr" />
@@ -13,8 +14,8 @@
     <result column="LAST_LOGIN_TIME" jdbcType="VARCHAR" property="lastLoginTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    LOGIN_ACCT, LOGIN_PWD, NICK_NAME, ACCT_TYPE, ACCT_LEVEL, EMAIL_ADDR, MOBILE, LAST_LOGIN_DATE, 
-    LAST_LOGIN_TIME
+    LOGIN_ACCT, LOGIN_PWD, NICK_NAME, ACCT_STATUS, ACCT_TYPE, ACCT_LEVEL, EMAIL_ADDR, 
+    MOBILE, LAST_LOGIN_DATE, LAST_LOGIN_TIME
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -28,13 +29,13 @@
   </delete>
   <insert id="insert" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     insert into taoism_acct_info (LOGIN_ACCT, LOGIN_PWD, NICK_NAME, 
-      ACCT_TYPE, ACCT_LEVEL, EMAIL_ADDR, 
-      MOBILE, LAST_LOGIN_DATE, LAST_LOGIN_TIME
-      )
+      ACCT_STATUS, ACCT_TYPE, ACCT_LEVEL, 
+      EMAIL_ADDR, MOBILE, LAST_LOGIN_DATE, 
+      LAST_LOGIN_TIME)
     values (#{loginAcct,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{acctType,jdbcType=INTEGER}, #{acctLevel,jdbcType=INTEGER}, #{emailAddr,jdbcType=VARCHAR}, 
-      #{mobile,jdbcType=VARCHAR}, #{lastLoginDate,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=VARCHAR}
-      )
+      #{acctStatus,jdbcType=VARCHAR}, #{acctType,jdbcType=INTEGER}, #{acctLevel,jdbcType=INTEGER}, 
+      #{emailAddr,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{lastLoginDate,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     insert into taoism_acct_info
@@ -47,6 +48,9 @@
       </if>
       <if test="nickName != null">
         NICK_NAME,
+      </if>
+      <if test="acctStatus != null">
+        ACCT_STATUS,
       </if>
       <if test="acctType != null">
         ACCT_TYPE,
@@ -77,6 +81,9 @@
       <if test="nickName != null">
         #{nickName,jdbcType=VARCHAR},
       </if>
+      <if test="acctStatus != null">
+        #{acctStatus,jdbcType=VARCHAR},
+      </if>
       <if test="acctType != null">
         #{acctType,jdbcType=INTEGER},
       </if>
@@ -106,6 +113,9 @@
       <if test="nickName != null">
         NICK_NAME = #{nickName,jdbcType=VARCHAR},
       </if>
+      <if test="acctStatus != null">
+        ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
+      </if>
       <if test="acctType != null">
         ACCT_TYPE = #{acctType,jdbcType=INTEGER},
       </if>
@@ -131,6 +141,7 @@
     update taoism_acct_info
     set LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
       NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
       ACCT_TYPE = #{acctType,jdbcType=INTEGER},
       ACCT_LEVEL = #{acctLevel,jdbcType=INTEGER},
       EMAIL_ADDR = #{emailAddr,jdbcType=VARCHAR},

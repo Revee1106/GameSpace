@@ -17,6 +17,7 @@ spring:
       database: 0
       host: 101.133.218.111
       port: 6379
+      password: c$2N$Gdp
       jedis:
          pool:
             #最大连接数
@@ -30,5 +31,4 @@ spring:
       #连接超时时间
       timeout: 10000
 mybatis:
-   config-location: classpath:mybatis/mybatis.xml
-   mapperLocations: classpath:mybatis/mapper/*.xml
+   mapperLocations: classpath:mapper/*.xml

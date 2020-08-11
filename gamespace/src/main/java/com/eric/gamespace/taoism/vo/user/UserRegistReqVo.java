@@ -2,6 +2,8 @@ package com.eric.gamespace.taoism.vo.user;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+
 import lombok.Getter;
 import lombok.Setter;
 
