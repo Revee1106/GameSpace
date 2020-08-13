@@ -29,4 +29,10 @@ public class RedisServiceImpl implements RedisService {
         return o;
 	}
 	
+	@Override
+	public void setObj(final String key, Object obj) {
+		ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
+        operations.set(key, obj);
+	}
+	
 }

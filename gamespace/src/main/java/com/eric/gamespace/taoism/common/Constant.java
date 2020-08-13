@@ -70,4 +70,82 @@ public interface Constant {
 		 */
 		String LOGIN_ACCT_EXIST = "账号已存在";
 	}
+	
+	/**
+	 * 数据库参数表参数类型
+	 * @author eric
+	 *
+	 */
+	interface ParamType {
+		
+		/**
+		 * 系统参数
+		 */
+		String SYS_PARAM = "0000";
+	}
+	
+	/**
+	 * 缓存参数的Key
+	 * @author eric
+	 *
+	 */
+	interface CacheKey {
+		
+		/**
+		 * MD5加密key
+		 */
+		String MD5_KEY = "MD5-KEY";
+	}
+	
+	/**
+	 * 账户类型
+	 * @author eric
+	 *
+	 */
+	interface AcctType {
+		
+		/**
+		 * 普通用户
+		 */
+		Integer NORMAL = 0;
+		
+		/**
+		 * 管理员
+		 */
+		Integer ADMIN = 1;
+		
+		/**
+		 * 测试用户
+		 */
+		Integer TEST = 2;
+	}
+	
+	/**
+	 * 账户状态
+	 * @author catji
+	 *
+	 */
+	interface AcctStatus {
+		
+		/**
+		 * 初始状态
+		 */
+		String INIT = "00";
+		
+		/**
+		 * 正常
+		 */
+		String NORMAL = "01";
+		
+		/**
+		 * 冻结
+		 */
+		String FREEZE = "02";
+		
+		/**
+		 * 封禁
+		 */
+		String PROHIBIT = "03";
+		
+	}
 }
