@@ -23,7 +23,8 @@ public class UserController {
 	public UserRegistRespVo userRegist(@RequestBody UserRegistReqVo reqVo) {
 		log.info("userRegist start, param is:{}", JsonUtil.beanToJson(reqVo));
 		UserRegistRespVo respVo = userService.userRegist(reqVo);
-		return null;
+		log.info("userRegist end, response is:{}", JsonUtil.beanToJson(respVo));
+		return respVo;
 		
 	}
 	

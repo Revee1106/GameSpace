@@ -9,9 +9,9 @@ public class TaoismAcctInfo {
 
     private String acctStatus;
 
-    private Integer acctType;
+    private String acctType;
 
-    private Integer acctLevel;
+    private String acctLevel;
 
     private String emailAddr;
 
@@ -53,20 +53,20 @@ public class TaoismAcctInfo {
         this.acctStatus = acctStatus == null ? null : acctStatus.trim();
     }
 
-    public Integer getAcctType() {
+    public String getAcctType() {
         return acctType;
     }
 
-    public void setAcctType(Integer acctType) {
-        this.acctType = acctType;
+    public void setAcctType(String acctType) {
+        this.acctType = acctType == null ? null : acctType.trim();
     }
 
-    public Integer getAcctLevel() {
+    public String getAcctLevel() {
         return acctLevel;
     }
 
-    public void setAcctLevel(Integer acctLevel) {
-        this.acctLevel = acctLevel;
+    public void setAcctLevel(String acctLevel) {
+        this.acctLevel = acctLevel == null ? null : acctLevel.trim();
     }
 
     public String getEmailAddr() {

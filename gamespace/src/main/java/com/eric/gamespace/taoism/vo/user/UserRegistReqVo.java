@@ -21,11 +21,5 @@ public class UserRegistReqVo implements Serializable{
 	 */
 	private static final long serialVersionUID = 7684453634083229947L;
 
-	private String loginAcct;
-	
-	private String loginPwd;
-	
-	private String nickName;
-	
-	private String emailAddr;
+	private AcctInfoVo acctInfo;
 }

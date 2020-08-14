@@ -6,8 +6,8 @@
     <result column="LOGIN_PWD" jdbcType="VARCHAR" property="loginPwd" />
     <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName" />
     <result column="ACCT_STATUS" jdbcType="VARCHAR" property="acctStatus" />
-    <result column="ACCT_TYPE" jdbcType="INTEGER" property="acctType" />
-    <result column="ACCT_LEVEL" jdbcType="INTEGER" property="acctLevel" />
+    <result column="ACCT_TYPE" jdbcType="VARCHAR" property="acctType" />
+    <result column="ACCT_LEVEL" jdbcType="VARCHAR" property="acctLevel" />
     <result column="EMAIL_ADDR" jdbcType="VARCHAR" property="emailAddr" />
     <result column="MOBILE" jdbcType="VARCHAR" property="mobile" />
     <result column="LAST_LOGIN_DATE" jdbcType="VARCHAR" property="lastLoginDate" />
@@ -33,7 +33,7 @@
       EMAIL_ADDR, MOBILE, LAST_LOGIN_DATE, 
       LAST_LOGIN_TIME)
     values (#{loginAcct,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{acctStatus,jdbcType=VARCHAR}, #{acctType,jdbcType=INTEGER}, #{acctLevel,jdbcType=INTEGER}, 
+      #{acctStatus,jdbcType=VARCHAR}, #{acctType,jdbcType=VARCHAR}, #{acctLevel,jdbcType=VARCHAR}, 
       #{emailAddr,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{lastLoginDate,jdbcType=VARCHAR}, 
       #{lastLoginTime,jdbcType=VARCHAR})
   </insert>
@@ -85,10 +85,10 @@
         #{acctStatus,jdbcType=VARCHAR},
       </if>
       <if test="acctType != null">
-        #{acctType,jdbcType=INTEGER},
+        #{acctType,jdbcType=VARCHAR},
       </if>
       <if test="acctLevel != null">
-        #{acctLevel,jdbcType=INTEGER},
+        #{acctLevel,jdbcType=VARCHAR},
       </if>
       <if test="emailAddr != null">
         #{emailAddr,jdbcType=VARCHAR},
@@ -117,10 +117,10 @@
         ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
       </if>
       <if test="acctType != null">
-        ACCT_TYPE = #{acctType,jdbcType=INTEGER},
+        ACCT_TYPE = #{acctType,jdbcType=VARCHAR},
       </if>
       <if test="acctLevel != null">
-        ACCT_LEVEL = #{acctLevel,jdbcType=INTEGER},
+        ACCT_LEVEL = #{acctLevel,jdbcType=VARCHAR},
       </if>
       <if test="emailAddr != null">
         EMAIL_ADDR = #{emailAddr,jdbcType=VARCHAR},
@@ -142,8 +142,8 @@
     set LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
       NICK_NAME = #{nickName,jdbcType=VARCHAR},
       ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
-      ACCT_TYPE = #{acctType,jdbcType=INTEGER},
-      ACCT_LEVEL = #{acctLevel,jdbcType=INTEGER},
+      ACCT_TYPE = #{acctType,jdbcType=VARCHAR},
+      ACCT_LEVEL = #{acctLevel,jdbcType=VARCHAR},
       EMAIL_ADDR = #{emailAddr,jdbcType=VARCHAR},
       MOBILE = #{mobile,jdbcType=VARCHAR},
       LAST_LOGIN_DATE = #{lastLoginDate,jdbcType=VARCHAR},

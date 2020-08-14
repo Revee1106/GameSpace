@@ -107,17 +107,17 @@ public interface Constant {
 		/**
 		 * 普通用户
 		 */
-		Integer NORMAL = 0;
+		String NORMAL = "0";
 		
 		/**
 		 * 管理员
 		 */
-		Integer ADMIN = 1;
+		String ADMIN = "1";
 		
 		/**
 		 * 测试用户
 		 */
-		Integer TEST = 2;
+		String TEST = "2";
 	}
 	
 	/**

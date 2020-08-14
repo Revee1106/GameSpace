@@ -28,8 +28,6 @@ public class CacheConstant {
 	@Autowired
 	private TaoismParamInfoMapper paramInfoMapper;
 	
-	@Autowired
-	private RedisService redisService;
 	
 	@PostConstruct
 	public void init() {
@@ -37,8 +35,6 @@ public class CacheConstant {
 		List<TaoismParamInfo> paramInfos = paramInfoMapper.selectByParamType(Constant.ParamType.SYS_PARAM);
 		//循环处理查询出来的系统参数，并放入redis缓存中，避免后面使用时查询数据库
 		for (TaoismParamInfo paramInfo : paramInfos) {
-			//放入缓存中，缓存2小时
-			redisService.setObj(paramInfo.getParamKey(), paramInfo.getParamValue());
 			//放入常量map中
 			constantMap.put(paramInfo.getParamKey(), paramInfo.getParamValue());
 		}
