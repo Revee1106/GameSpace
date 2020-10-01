@@ -5,21 +5,19 @@ public class TaoismAcctInfo {
 
     private String loginPwd;
 
-    private String nickName;
+    private String acctNickName;
 
     private String acctStatus;
+
+    private String acctStatusDesc;
 
     private String acctType;
 
     private String acctLevel;
 
-    private String emailAddr;
+    private String acctEmailAddr;
 
-    private String mobile;
-
-    private String lastLoginDate;
-
-    private String lastLoginTime;
+    private String acctPhoneNo;
 
     public String getLoginAcct() {
         return loginAcct;
@@ -37,12 +35,12 @@ public class TaoismAcctInfo {
         this.loginPwd = loginPwd == null ? null : loginPwd.trim();
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getAcctNickName() {
+        return acctNickName;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName == null ? null : nickName.trim();
+    public void setAcctNickName(String acctNickName) {
+        this.acctNickName = acctNickName == null ? null : acctNickName.trim();
     }
 
     public String getAcctStatus() {
@@ -51,6 +49,14 @@ public class TaoismAcctInfo {
 
     public void setAcctStatus(String acctStatus) {
         this.acctStatus = acctStatus == null ? null : acctStatus.trim();
+    }
+
+    public String getAcctStatusDesc() {
+        return acctStatusDesc;
+    }
+
+    public void setAcctStatusDesc(String acctStatusDesc) {
+        this.acctStatusDesc = acctStatusDesc == null ? null : acctStatusDesc.trim();
     }
 
     public String getAcctType() {
@@ -69,35 +75,19 @@ public class TaoismAcctInfo {
         this.acctLevel = acctLevel == null ? null : acctLevel.trim();
     }
 
-    public String getEmailAddr() {
-        return emailAddr;
+    public String getAcctEmailAddr() {
+        return acctEmailAddr;
     }
 
-    public void setEmailAddr(String emailAddr) {
-        this.emailAddr = emailAddr == null ? null : emailAddr.trim();
+    public void setAcctEmailAddr(String acctEmailAddr) {
+        this.acctEmailAddr = acctEmailAddr == null ? null : acctEmailAddr.trim();
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getAcctPhoneNo() {
+        return acctPhoneNo;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
-    }
-
-    public String getLastLoginDate() {
-        return lastLoginDate;
-    }
-
-    public void setLastLoginDate(String lastLoginDate) {
-        this.lastLoginDate = lastLoginDate == null ? null : lastLoginDate.trim();
-    }
-
-    public String getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(String lastLoginTime) {
-        this.lastLoginTime = lastLoginTime == null ? null : lastLoginTime.trim();
+    public void setAcctPhoneNo(String acctPhoneNo) {
+        this.acctPhoneNo = acctPhoneNo == null ? null : acctPhoneNo.trim();
     }
 }

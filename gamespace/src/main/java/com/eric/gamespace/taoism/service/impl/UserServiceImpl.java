@@ -48,8 +48,8 @@ public class UserServiceImpl implements UserService {
 			// 密码MD5加密入库
 			createAcct.setLoginPwd(MD5Util.md5Encrypt(reqVo.getAcctInfo().getLoginPwd(),
 					(String) CacheConstant.constantMap.get(Constant.CacheKey.MD5_KEY), "UTF-8"));
-			createAcct.setNickName(reqVo.getAcctInfo().getNickName());
-			createAcct.setEmailAddr(reqVo.getAcctInfo().getEmailAddr());
+			createAcct.setAcctNickName(reqVo.getAcctInfo().getNickName());
+			createAcct.setAcctEmailAddr(reqVo.getAcctInfo().getEmailAddr());
 			//TODO 后续修改成这里状态为初始，邮箱链接点击后改成正常状态
 			createAcct.setAcctStatus(Constant.AcctStatus.NORMAL);
 			log.info("{},创建账号参数:{}",reqVo.getAcctInfo().getLoginAcct(),JsonUtil.beanToJson(createAcct));

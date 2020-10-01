@@ -4,18 +4,17 @@
   <resultMap id="BaseResultMap" type="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     <id column="LOGIN_ACCT" jdbcType="VARCHAR" property="loginAcct" />
     <result column="LOGIN_PWD" jdbcType="VARCHAR" property="loginPwd" />
-    <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName" />
+    <result column="ACCT_NICK_NAME" jdbcType="VARCHAR" property="acctNickName" />
     <result column="ACCT_STATUS" jdbcType="VARCHAR" property="acctStatus" />
+    <result column="ACCT_STATUS_DESC" jdbcType="VARCHAR" property="acctStatusDesc" />
     <result column="ACCT_TYPE" jdbcType="VARCHAR" property="acctType" />
     <result column="ACCT_LEVEL" jdbcType="VARCHAR" property="acctLevel" />
-    <result column="EMAIL_ADDR" jdbcType="VARCHAR" property="emailAddr" />
-    <result column="MOBILE" jdbcType="VARCHAR" property="mobile" />
-    <result column="LAST_LOGIN_DATE" jdbcType="VARCHAR" property="lastLoginDate" />
-    <result column="LAST_LOGIN_TIME" jdbcType="VARCHAR" property="lastLoginTime" />
+    <result column="ACCT_EMAIL_ADDR" jdbcType="VARCHAR" property="acctEmailAddr" />
+    <result column="ACCT_PHONE_NO" jdbcType="VARCHAR" property="acctPhoneNo" />
   </resultMap>
   <sql id="Base_Column_List">
-    LOGIN_ACCT, LOGIN_PWD, NICK_NAME, ACCT_STATUS, ACCT_TYPE, ACCT_LEVEL, EMAIL_ADDR, 
-    MOBILE, LAST_LOGIN_DATE, LAST_LOGIN_TIME
+    LOGIN_ACCT, LOGIN_PWD, ACCT_NICK_NAME, ACCT_STATUS, ACCT_STATUS_DESC, ACCT_TYPE, 
+    ACCT_LEVEL, ACCT_EMAIL_ADDR, ACCT_PHONE_NO
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -28,14 +27,14 @@
     where LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
-    insert into taoism_acct_info (LOGIN_ACCT, LOGIN_PWD, NICK_NAME, 
-      ACCT_STATUS, ACCT_TYPE, ACCT_LEVEL, 
-      EMAIL_ADDR, MOBILE, LAST_LOGIN_DATE, 
-      LAST_LOGIN_TIME)
-    values (#{loginAcct,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{acctStatus,jdbcType=VARCHAR}, #{acctType,jdbcType=VARCHAR}, #{acctLevel,jdbcType=VARCHAR}, 
-      #{emailAddr,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{lastLoginDate,jdbcType=VARCHAR}, 
-      #{lastLoginTime,jdbcType=VARCHAR})
+    insert into taoism_acct_info (LOGIN_ACCT, LOGIN_PWD, ACCT_NICK_NAME, 
+      ACCT_STATUS, ACCT_STATUS_DESC, ACCT_TYPE, 
+      ACCT_LEVEL, ACCT_EMAIL_ADDR, ACCT_PHONE_NO
+      )
+    values (#{loginAcct,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, #{acctNickName,jdbcType=VARCHAR}, 
+      #{acctStatus,jdbcType=VARCHAR}, #{acctStatusDesc,jdbcType=VARCHAR}, #{acctType,jdbcType=VARCHAR}, 
+      #{acctLevel,jdbcType=VARCHAR}, #{acctEmailAddr,jdbcType=VARCHAR}, #{acctPhoneNo,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     insert into taoism_acct_info
@@ -46,11 +45,14 @@
       <if test="loginPwd != null">
         LOGIN_PWD,
       </if>
-      <if test="nickName != null">
-        NICK_NAME,
+      <if test="acctNickName != null">
+        ACCT_NICK_NAME,
       </if>
       <if test="acctStatus != null">
         ACCT_STATUS,
+      </if>
+      <if test="acctStatusDesc != null">
+        ACCT_STATUS_DESC,
       </if>
       <if test="acctType != null">
         ACCT_TYPE,
@@ -58,17 +60,11 @@
       <if test="acctLevel != null">
         ACCT_LEVEL,
       </if>
-      <if test="emailAddr != null">
-        EMAIL_ADDR,
+      <if test="acctEmailAddr != null">
+        ACCT_EMAIL_ADDR,
       </if>
-      <if test="mobile != null">
-        MOBILE,
-      </if>
-      <if test="lastLoginDate != null">
-        LAST_LOGIN_DATE,
-      </if>
-      <if test="lastLoginTime != null">
-        LAST_LOGIN_TIME,
+      <if test="acctPhoneNo != null">
+        ACCT_PHONE_NO,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -78,11 +74,14 @@
       <if test="loginPwd != null">
         #{loginPwd,jdbcType=VARCHAR},
       </if>
-      <if test="nickName != null">
-        #{nickName,jdbcType=VARCHAR},
+      <if test="acctNickName != null">
+        #{acctNickName,jdbcType=VARCHAR},
       </if>
       <if test="acctStatus != null">
         #{acctStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="acctStatusDesc != null">
+        #{acctStatusDesc,jdbcType=VARCHAR},
       </if>
       <if test="acctType != null">
         #{acctType,jdbcType=VARCHAR},
@@ -90,17 +89,11 @@
       <if test="acctLevel != null">
         #{acctLevel,jdbcType=VARCHAR},
       </if>
-      <if test="emailAddr != null">
-        #{emailAddr,jdbcType=VARCHAR},
+      <if test="acctEmailAddr != null">
+        #{acctEmailAddr,jdbcType=VARCHAR},
       </if>
-      <if test="mobile != null">
-        #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLoginDate != null">
-        #{lastLoginDate,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLoginTime != null">
-        #{lastLoginTime,jdbcType=VARCHAR},
+      <if test="acctPhoneNo != null">
+        #{acctPhoneNo,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -110,11 +103,14 @@
       <if test="loginPwd != null">
         LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
       </if>
-      <if test="nickName != null">
-        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      <if test="acctNickName != null">
+        ACCT_NICK_NAME = #{acctNickName,jdbcType=VARCHAR},
       </if>
       <if test="acctStatus != null">
         ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="acctStatusDesc != null">
+        ACCT_STATUS_DESC = #{acctStatusDesc,jdbcType=VARCHAR},
       </if>
       <if test="acctType != null">
         ACCT_TYPE = #{acctType,jdbcType=VARCHAR},
@@ -122,17 +118,11 @@
       <if test="acctLevel != null">
         ACCT_LEVEL = #{acctLevel,jdbcType=VARCHAR},
       </if>
-      <if test="emailAddr != null">
-        EMAIL_ADDR = #{emailAddr,jdbcType=VARCHAR},
+      <if test="acctEmailAddr != null">
+        ACCT_EMAIL_ADDR = #{acctEmailAddr,jdbcType=VARCHAR},
       </if>
-      <if test="mobile != null">
-        MOBILE = #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLoginDate != null">
-        LAST_LOGIN_DATE = #{lastLoginDate,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLoginTime != null">
-        LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=VARCHAR},
+      <if test="acctPhoneNo != null">
+        ACCT_PHONE_NO = #{acctPhoneNo,jdbcType=VARCHAR},
       </if>
     </set>
     where LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR}
@@ -140,14 +130,13 @@
   <update id="updateByPrimaryKey" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     update taoism_acct_info
     set LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
-      NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      ACCT_NICK_NAME = #{acctNickName,jdbcType=VARCHAR},
       ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
+      ACCT_STATUS_DESC = #{acctStatusDesc,jdbcType=VARCHAR},
       ACCT_TYPE = #{acctType,jdbcType=VARCHAR},
       ACCT_LEVEL = #{acctLevel,jdbcType=VARCHAR},
-      EMAIL_ADDR = #{emailAddr,jdbcType=VARCHAR},
-      MOBILE = #{mobile,jdbcType=VARCHAR},
-      LAST_LOGIN_DATE = #{lastLoginDate,jdbcType=VARCHAR},
-      LAST_LOGIN_TIME = #{lastLoginTime,jdbcType=VARCHAR}
+      ACCT_EMAIL_ADDR = #{acctEmailAddr,jdbcType=VARCHAR},
+      ACCT_PHONE_NO = #{acctPhoneNo,jdbcType=VARCHAR}
     where LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR}
   </update>
 </mapper>
