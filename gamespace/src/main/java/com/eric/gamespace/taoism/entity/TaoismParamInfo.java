@@ -1,8 +1,6 @@
 package com.eric.gamespace.taoism.entity;
 
 public class TaoismParamInfo {
-    private Integer id;
-
     private String paramKey;
 
     private String paramValue;
@@ -10,14 +8,6 @@ public class TaoismParamInfo {
     private String paramType;
 
     private String paramDesc;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getParamKey() {
         return paramKey;

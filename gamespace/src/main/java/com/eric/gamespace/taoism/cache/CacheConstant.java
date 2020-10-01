@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import com.eric.gamespace.taoism.common.Constant;
 import com.eric.gamespace.taoism.dao.TaoismParamInfoMapper;
 import com.eric.gamespace.taoism.entity.TaoismParamInfo;
-import com.eric.gamespace.taoism.service.RedisService;
 
 /**
  * 缓存的常量

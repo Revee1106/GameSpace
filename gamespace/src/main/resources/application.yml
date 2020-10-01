@@ -9,10 +9,10 @@ server:
          enabled: true
 spring:
    datasource:
-      url: jdbc:mysql://127.0.0.1:3306/taoism?characterEncoding=utf8&useSSL=false
+      url: jdbc:mysql://101.133.218.111:3306/taoism?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
       username: root
       password: c$2N$Gdp
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
    redis:
       database: 0
       host: 101.133.218.111

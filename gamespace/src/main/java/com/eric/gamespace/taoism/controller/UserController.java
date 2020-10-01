@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.eric.gamespace.taoism.cache.CacheConstant;
+import com.eric.gamespace.taoism.common.Constant;
 import com.eric.gamespace.taoism.common.util.JsonUtil;
 import com.eric.gamespace.taoism.service.UserService;
 import com.eric.gamespace.taoism.vo.user.UserRegistReqVo;
@@ -30,7 +32,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/")
 	public String home() {
-		return "Welcome to My GameSpace!";
+		return "Welcome to My GameSpace!" + CacheConstant.constantMap.get(Constant.CacheKey.TEST_KEY);
 	}
 	
 }

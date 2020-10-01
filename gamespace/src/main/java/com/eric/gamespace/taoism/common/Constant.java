@@ -92,6 +92,11 @@ public interface Constant {
 	interface CacheKey {
 		
 		/**
+		 * 测试redis用key
+		 */
+		String TEST_KEY = "testKey";
+		
+		/**
 		 * MD5加密key
 		 */
 		String MD5_KEY = "MD5-KEY";
