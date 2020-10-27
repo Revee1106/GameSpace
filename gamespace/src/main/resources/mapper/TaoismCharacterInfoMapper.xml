@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eric.gamespace.taoism.dao.TaoismCharacterInfoMapper">
+  <resultMap id="BaseResultMap" type="com.eric.gamespace.taoism.entity.TaoismCharacterInfo">
+    <id column="character_id" jdbcType="INTEGER" property="characterId" />
+    <id column="acct_id" jdbcType="INTEGER" property="acctId" />
+    <result column="character_name" jdbcType="VARCHAR" property="characterName" />
+    <result column="character_level" jdbcType="INTEGER" property="characterLevel" />
+    <result column="character_hp" jdbcType="BIGINT" property="characterHp" />
+    <result column="character_mp" jdbcType="BIGINT" property="characterMp" />
+    <result column="character_str" jdbcType="BIGINT" property="characterStr" />
+    <result column="character_agi" jdbcType="BIGINT" property="characterAgi" />
+    <result column="character_int" jdbcType="BIGINT" property="characterInt" />
+    <result column="character_def" jdbcType="BIGINT" property="characterDef" />
+    <result column="character_alchemy_level" jdbcType="INTEGER" property="characterAlchemyLevel" />
+    <result column="character_forge_level" jdbcType="INTEGER" property="characterForgeLevel" />
+    <result column="character_title" jdbcType="VARCHAR" property="characterTitle" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    character_id, acct_id, character_name, character_level, character_hp, character_mp, 
+    character_str, character_agi, character_int, character_def, character_alchemy_level, 
+    character_forge_level, character_title
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.eric.gamespace.taoism.entity.TaoismCharacterInfoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from taoism_character_info
+    where character_id = #{characterId,jdbcType=INTEGER}
+      and acct_id = #{acctId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.eric.gamespace.taoism.entity.TaoismCharacterInfoKey">
+    delete from taoism_character_info
+    where character_id = #{characterId,jdbcType=INTEGER}
+      and acct_id = #{acctId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.eric.gamespace.taoism.entity.TaoismCharacterInfo">
+    insert into taoism_character_info (character_id, acct_id, character_name, 
+      character_level, character_hp, character_mp, 
+      character_str, character_agi, character_int, 
+      character_def, character_alchemy_level, character_forge_level, 
+      character_title)
+    values (#{characterId,jdbcType=INTEGER}, #{acctId,jdbcType=INTEGER}, #{characterName,jdbcType=VARCHAR}, 
+      #{characterLevel,jdbcType=INTEGER}, #{characterHp,jdbcType=BIGINT}, #{characterMp,jdbcType=BIGINT}, 
+      #{characterStr,jdbcType=BIGINT}, #{characterAgi,jdbcType=BIGINT}, #{characterInt,jdbcType=BIGINT}, 
+      #{characterDef,jdbcType=BIGINT}, #{characterAlchemyLevel,jdbcType=INTEGER}, #{characterForgeLevel,jdbcType=INTEGER}, 
+      #{characterTitle,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eric.gamespace.taoism.entity.TaoismCharacterInfo">
+    insert into taoism_character_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="characterId != null">
+        character_id,
+      </if>
+      <if test="acctId != null">
+        acct_id,
+      </if>
+      <if test="characterName != null">
+        character_name,
+      </if>
+      <if test="characterLevel != null">
+        character_level,
+      </if>
+      <if test="characterHp != null">
+        character_hp,
+      </if>
+      <if test="characterMp != null">
+        character_mp,
+      </if>
+      <if test="characterStr != null">
+        character_str,
+      </if>
+      <if test="characterAgi != null">
+        character_agi,
+      </if>
+      <if test="characterInt != null">
+        character_int,
+      </if>
+      <if test="characterDef != null">
+        character_def,
+      </if>
+      <if test="characterAlchemyLevel != null">
+        character_alchemy_level,
+      </if>
+      <if test="characterForgeLevel != null">
+        character_forge_level,
+      </if>
+      <if test="characterTitle != null">
+        character_title,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="characterId != null">
+        #{characterId,jdbcType=INTEGER},
+      </if>
+      <if test="acctId != null">
+        #{acctId,jdbcType=INTEGER},
+      </if>
+      <if test="characterName != null">
+        #{characterName,jdbcType=VARCHAR},
+      </if>
+      <if test="characterLevel != null">
+        #{characterLevel,jdbcType=INTEGER},
+      </if>
+      <if test="characterHp != null">
+        #{characterHp,jdbcType=BIGINT},
+      </if>
+      <if test="characterMp != null">
+        #{characterMp,jdbcType=BIGINT},
+      </if>
+      <if test="characterStr != null">
+        #{characterStr,jdbcType=BIGINT},
+      </if>
+      <if test="characterAgi != null">
+        #{characterAgi,jdbcType=BIGINT},
+      </if>
+      <if test="characterInt != null">
+        #{characterInt,jdbcType=BIGINT},
+      </if>
+      <if test="characterDef != null">
+        #{characterDef,jdbcType=BIGINT},
+      </if>
+      <if test="characterAlchemyLevel != null">
+        #{characterAlchemyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="characterForgeLevel != null">
+        #{characterForgeLevel,jdbcType=INTEGER},
+      </if>
+      <if test="characterTitle != null">
+        #{characterTitle,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eric.gamespace.taoism.entity.TaoismCharacterInfo">
+    update taoism_character_info
+    <set>
+      <if test="characterName != null">
+        character_name = #{characterName,jdbcType=VARCHAR},
+      </if>
+      <if test="characterLevel != null">
+        character_level = #{characterLevel,jdbcType=INTEGER},
+      </if>
+      <if test="characterHp != null">
+        character_hp = #{characterHp,jdbcType=BIGINT},
+      </if>
+      <if test="characterMp != null">
+        character_mp = #{characterMp,jdbcType=BIGINT},
+      </if>
+      <if test="characterStr != null">
+        character_str = #{characterStr,jdbcType=BIGINT},
+      </if>
+      <if test="characterAgi != null">
+        character_agi = #{characterAgi,jdbcType=BIGINT},
+      </if>
+      <if test="characterInt != null">
+        character_int = #{characterInt,jdbcType=BIGINT},
+      </if>
+      <if test="characterDef != null">
+        character_def = #{characterDef,jdbcType=BIGINT},
+      </if>
+      <if test="characterAlchemyLevel != null">
+        character_alchemy_level = #{characterAlchemyLevel,jdbcType=INTEGER},
+      </if>
+      <if test="characterForgeLevel != null">
+        character_forge_level = #{characterForgeLevel,jdbcType=INTEGER},
+      </if>
+      <if test="characterTitle != null">
+        character_title = #{characterTitle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where character_id = #{characterId,jdbcType=INTEGER}
+      and acct_id = #{acctId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eric.gamespace.taoism.entity.TaoismCharacterInfo">
+    update taoism_character_info
+    set character_name = #{characterName,jdbcType=VARCHAR},
+      character_level = #{characterLevel,jdbcType=INTEGER},
+      character_hp = #{characterHp,jdbcType=BIGINT},
+      character_mp = #{characterMp,jdbcType=BIGINT},
+      character_str = #{characterStr,jdbcType=BIGINT},
+      character_agi = #{characterAgi,jdbcType=BIGINT},
+      character_int = #{characterInt,jdbcType=BIGINT},
+      character_def = #{characterDef,jdbcType=BIGINT},
+      character_alchemy_level = #{characterAlchemyLevel,jdbcType=INTEGER},
+      character_forge_level = #{characterForgeLevel,jdbcType=INTEGER},
+      character_title = #{characterTitle,jdbcType=VARCHAR}
+    where character_id = #{characterId,jdbcType=INTEGER}
+      and acct_id = #{acctId,jdbcType=INTEGER}
+  </update>
+</mapper>
