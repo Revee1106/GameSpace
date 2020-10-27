@@ -23,20 +23,18 @@ public class AcctInfoVo implements Serializable{
 
     private String loginPwd;
 
-    private String nickName;
+    private String acctNickName;
 
     private String acctStatus;
+    
+    private String acctStatusDesc;
 
     private String acctType;
 
     private String acctLevel;
 
-    private String emailAddr;
+    private String acctEmailAddr;
 
-    private String mobile;
-
-    private String lastLoginDate;
-
-    private String lastLoginTime;
+    private String acctPhoneNo;
 	
 }

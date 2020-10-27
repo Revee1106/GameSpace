@@ -1,6 +1,8 @@
 package com.eric.gamespace.taoism.entity;
 
 public class TaoismAcctInfo {
+    private Integer acctId;
+
     private String loginAcct;
 
     private String loginPwd;
@@ -18,6 +20,14 @@ public class TaoismAcctInfo {
     private String acctEmailAddr;
 
     private String acctPhoneNo;
+
+    public Integer getAcctId() {
+        return acctId;
+    }
+
+    public void setAcctId(Integer acctId) {
+        this.acctId = acctId;
+    }
 
     public String getLoginAcct() {
         return loginAcct;

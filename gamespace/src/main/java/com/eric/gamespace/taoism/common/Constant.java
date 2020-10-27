@@ -18,7 +18,6 @@ public interface Constant {
 		 * 成功应答
 		 */
 		String SUCCESS = "success";
-		
 	}
 	
 	/**
@@ -32,7 +31,6 @@ public interface Constant {
 		 * 成功应答
 		 */
 		String SUCCESS = "成功";
-		
 	}
 	
 	/**
@@ -45,12 +43,17 @@ public interface Constant {
 		/**
 		 * 业务成功
 		 */
-		String SUCCESS = "000000";
+		String SUCCESS = "000";
 		
 		/**
 		 * 业务失败
 		 */
-		String FAILURE = "111111";
+		String FAILURE = "111";
+		
+		/**
+		 * 系统异常
+		 */
+		String SYS_ERR = "999";
 	}
 	
 	/**
@@ -66,9 +69,19 @@ public interface Constant {
 		String SUCCESS = "成功";
 		
 		/**
+		 * 系统异常
+		 */
+		String SYS_ERR = "系统异常";
+		
+		/**
 		 * 注册报错，该账号已存在
 		 */
 		String LOGIN_ACCT_EXIST = "账号已存在";
+		
+		/**
+		 * 密码错误
+		 */
+		String PWD_ERR = "密码错误";
 	}
 	
 	/**

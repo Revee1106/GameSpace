@@ -18,8 +18,8 @@ public class AcctInfoDTO {
 		AcctInfoVo vo = new AcctInfoVo();
 		BeanUtils.copyProperties(po, vo);
 		//将部分字段转换成展示层使用的字符串
-		vo.setAcctStatus(AcctStatus.valueOf(po.getAcctStatus()).getStatusDesc());
-		vo.setAcctType(AcctType.valueOf(po.getAcctType()).getTypeDesc());
+		vo.setAcctStatusDesc(AcctStatus.getStatusDesc(po.getAcctStatus()));
+		vo.setAcctType(AcctType.getTypeDesc(po.getAcctType()));
 		return vo;
 	}
 	

@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.eric.gamespace.taoism.dao.TaoismAcctInfoMapper">
   <resultMap id="BaseResultMap" type="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
-    <id column="LOGIN_ACCT" jdbcType="VARCHAR" property="loginAcct" />
+    <id column="ACCT_ID" jdbcType="INTEGER" property="acctId" />
+    <result column="LOGIN_ACCT" jdbcType="VARCHAR" property="loginAcct" />
     <result column="LOGIN_PWD" jdbcType="VARCHAR" property="loginPwd" />
     <result column="ACCT_NICK_NAME" jdbcType="VARCHAR" property="acctNickName" />
     <result column="ACCT_STATUS" jdbcType="VARCHAR" property="acctStatus" />
@@ -13,32 +14,41 @@
     <result column="ACCT_PHONE_NO" jdbcType="VARCHAR" property="acctPhoneNo" />
   </resultMap>
   <sql id="Base_Column_List">
-    LOGIN_ACCT, LOGIN_PWD, ACCT_NICK_NAME, ACCT_STATUS, ACCT_STATUS_DESC, ACCT_TYPE, 
+    ACCT_ID, LOGIN_ACCT, LOGIN_PWD, ACCT_NICK_NAME, ACCT_STATUS, ACCT_STATUS_DESC, ACCT_TYPE, 
     ACCT_LEVEL, ACCT_EMAIL_ADDR, ACCT_PHONE_NO
   </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from taoism_acct_info
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from taoism_acct_info
     where LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from taoism_acct_info
-    where LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR}
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
-    insert into taoism_acct_info (LOGIN_ACCT, LOGIN_PWD, ACCT_NICK_NAME, 
-      ACCT_STATUS, ACCT_STATUS_DESC, ACCT_TYPE, 
-      ACCT_LEVEL, ACCT_EMAIL_ADDR, ACCT_PHONE_NO
-      )
-    values (#{loginAcct,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, #{acctNickName,jdbcType=VARCHAR}, 
-      #{acctStatus,jdbcType=VARCHAR}, #{acctStatusDesc,jdbcType=VARCHAR}, #{acctType,jdbcType=VARCHAR}, 
-      #{acctLevel,jdbcType=VARCHAR}, #{acctEmailAddr,jdbcType=VARCHAR}, #{acctPhoneNo,jdbcType=VARCHAR}
-      )
+    insert into taoism_acct_info (ACCT_ID, LOGIN_ACCT, LOGIN_PWD, 
+      ACCT_NICK_NAME, ACCT_STATUS, ACCT_STATUS_DESC, 
+      ACCT_TYPE, ACCT_LEVEL, ACCT_EMAIL_ADDR, 
+      ACCT_PHONE_NO)
+    values (#{acctId,jdbcType=INTEGER}, #{loginAcct,jdbcType=VARCHAR}, #{loginPwd,jdbcType=VARCHAR}, 
+      #{acctNickName,jdbcType=VARCHAR}, #{acctStatus,jdbcType=VARCHAR}, #{acctStatusDesc,jdbcType=VARCHAR}, 
+      #{acctType,jdbcType=VARCHAR}, #{acctLevel,jdbcType=VARCHAR}, #{acctEmailAddr,jdbcType=VARCHAR}, 
+      #{acctPhoneNo,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     insert into taoism_acct_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="acctId != null">
+        ACCT_ID,
+      </if>
       <if test="loginAcct != null">
         LOGIN_ACCT,
       </if>
@@ -68,6 +78,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="acctId != null">
+        #{acctId,jdbcType=INTEGER},
+      </if>
       <if test="loginAcct != null">
         #{loginAcct,jdbcType=VARCHAR},
       </if>
@@ -100,6 +113,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     update taoism_acct_info
     <set>
+      <if test="loginAcct != null">
+        LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR},
+      </if>
       <if test="loginPwd != null">
         LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
       </if>
@@ -125,11 +141,12 @@
         ACCT_PHONE_NO = #{acctPhoneNo,jdbcType=VARCHAR},
       </if>
     </set>
-    where LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR}
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     update taoism_acct_info
-    set LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
+    set LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR},
+      LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR},
       ACCT_NICK_NAME = #{acctNickName,jdbcType=VARCHAR},
       ACCT_STATUS = #{acctStatus,jdbcType=VARCHAR},
       ACCT_STATUS_DESC = #{acctStatusDesc,jdbcType=VARCHAR},
@@ -137,6 +154,11 @@
       ACCT_LEVEL = #{acctLevel,jdbcType=VARCHAR},
       ACCT_EMAIL_ADDR = #{acctEmailAddr,jdbcType=VARCHAR},
       ACCT_PHONE_NO = #{acctPhoneNo,jdbcType=VARCHAR}
-    where LOGIN_ACCT = #{loginAcct,jdbcType=VARCHAR}
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
+  </update>
+  <update id="updatePwdByPrimaryKey" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
+    update taoism_acct_info
+    set LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR}
+    where ACCT_ID = #{acctId,jdbcType=INTEGER}
   </update>
 </mapper>
