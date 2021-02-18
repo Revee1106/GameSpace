@@ -17,13 +17,13 @@
     ACCT_ID, LOGIN_ACCT, LOGIN_PWD, ACCT_NICK_NAME, ACCT_STATUS, ACCT_STATUS_DESC, ACCT_TYPE, 
     ACCT_LEVEL, ACCT_EMAIL_ADDR, ACCT_PHONE_NO
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByAcctId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from taoism_acct_info
     where ACCT_ID = #{acctId,jdbcType=INTEGER}
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByloginAcct" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from taoism_acct_info
@@ -156,7 +156,7 @@
       ACCT_PHONE_NO = #{acctPhoneNo,jdbcType=VARCHAR}
     where ACCT_ID = #{acctId,jdbcType=INTEGER}
   </update>
-  <update id="updatePwdByPrimaryKey" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
+  <update id="updatePwdByAcctId" parameterType="com.eric.gamespace.taoism.entity.TaoismAcctInfo">
     update taoism_acct_info
     set LOGIN_PWD = #{loginPwd,jdbcType=VARCHAR}
     where ACCT_ID = #{acctId,jdbcType=INTEGER}

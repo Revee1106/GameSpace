@@ -15,7 +15,9 @@ public interface TaoismAcctInfoMapper {
 
     int updateByPrimaryKey(TaoismAcctInfo record);
 
-	TaoismAcctInfo selectByPrimaryKey(String loginAcct);
+	TaoismAcctInfo selectByLoginAcct(String loginAcct);
+	
+	TaoismAcctInfo selectByAcctId(String acctId);
 
-	int updatePwdByPrimaryKey(TaoismAcctInfo queryResult);
+	int updatePwdByAcctId(TaoismAcctInfo queryResult);
 }

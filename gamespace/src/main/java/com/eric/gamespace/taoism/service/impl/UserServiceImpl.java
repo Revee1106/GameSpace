@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 		// 入参所有判空在页面完成，这里不做判断
 		UserRegistRespVo respVo = new UserRegistRespVo();
 		// 注册前先查询账号是否重复
-		TaoismAcctInfo queryResult = taoismAcctInfoMapper.selectByPrimaryKey(reqVo.getAcctInfo().getLoginAcct());
+		TaoismAcctInfo queryResult = taoismAcctInfoMapper.selectByLoginAcct(reqVo.getAcctInfo().getLoginAcct());
 		if (queryResult != null) {// 账号已存在
 			respVo.setBizCode(Constant.BizCode.FAILURE);
 			respVo.setBizMsg(Constant.BizMsg.LOGIN_ACCT_EXIST);
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
 		UserChangePwdRespVo respVo = new UserChangePwdRespVo();
 		try {
 			// 账号也不判空，页面上做限制
-			TaoismAcctInfo queryResult = taoismAcctInfoMapper.selectByPrimaryKey(reqVo.getLoginAcct());
+			TaoismAcctInfo queryResult = taoismAcctInfoMapper.selectByLoginAcct(reqVo.getLoginAcct());
 			// 讲传入的旧密码md5加密后进行比对
 			String oldPwd = MD5Util.md5Encrypt(reqVo.getOldLoginPwd(),
 					(String) CacheConstant.constantMap.get(Constant.CacheKey.MD5_KEY), "UTF-8");
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
 				String newPwd = MD5Util.md5Encrypt(reqVo.getNewLoginPwd(),
 						(String) CacheConstant.constantMap.get(Constant.CacheKey.MD5_KEY), "UTF-8");
 				queryResult.setLoginPwd(newPwd);
-				taoismAcctInfoMapper.updatePwdByPrimaryKey(queryResult);
+				taoismAcctInfoMapper.updatePwdByAcctId(queryResult);
 				respVo.setBizCode(Constant.BizCode.SUCCESS);
 				respVo.setBizMsg(Constant.BizMsg.SUCCESS);
 			}else {
